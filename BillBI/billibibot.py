@@ -19,7 +19,7 @@ async def help(update: Update, context: ContextTypes.DEFAULT_TYPE):
 # /photo — отправка фото
 async def photo(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_photo(
-        photo="https://picsum.photos/600/400",
+        photo="https://i.pinimg.com/736x/ec/b9/2d/ecb92d18c7855c986a5571c1b6f7cad2.jpg",
         caption="Вот тебе картинка, брат! 📸"
     )
 
