@@ -1,4 +1,4 @@
-from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
+from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup, BotCommand, Bot
 from telegram.ext import Application, CommandHandler, ContextTypes
 
 
@@ -12,7 +12,7 @@ async def hello(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 
 async def foto(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_photo(
-        photo='https://i.pinimg.com/736x/ec/b9/2d/ecb92d18c7855c986a5571c1b6f7cad2.jpg',
+        photo='http://i.pinimg.com/736x/ec/b9/2d/ecb92d18c7855c986a5571c1b6f7cad2.jpg',
         caption='Here is you Foto',
     )
 
@@ -29,9 +29,17 @@ async def help(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     await update.message.reply_text("Please choose:", reply_markup=reply_markup)
 
-app = Application.builder().token('8093611066:AAFVTE4h4xFaU0kW0nDJD-lgVKn-q2f1PpE').build()
+app = Application.builder().token('8093611066:AAEseXIWMBkInLQT56EVvwd-L5P6PsGPxsc').build()
 app.add_handler(CommandHandler('start', start))
 app.add_handler(CommandHandler('foto', foto))
 app.add_handler(CommandHandler('hello', hello))
 app.add_handler(CommandHandler('help', help))
+async def setup_commands(application):
+    await application.bot.set_my_commands([
+        BotCommand("start", "Начать"),
+        BotCommand("help", "Помощь"),
+        BotCommand("photo", "Отправить фото"),
+    ])
+app.post_init = setup_commands  # установить команды при запуске
+
 app.run_polling()
