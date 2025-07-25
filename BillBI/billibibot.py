@@ -28,8 +28,7 @@ async def block_all(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text("⛔ Только команды разрешены! Используй /start или /help.")
 
 # Создание приложения
-app = Application.builder().token("8093611066:AAHeyUy3WGGc00peTNgyUbuvH54vv_mLolQ").build()
-
+app = Application.builder().token("8093611066:AAH5q_T6UCAa2HrOlXn0W09TW2-KORejhbE").build()
 # Обработчики команд
 app.add_handler(CommandHandler("start", start)) 
 app.add_handler(CommandHandler("help", help))
